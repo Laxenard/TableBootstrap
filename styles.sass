@@ -1,0 +1,199 @@
+//General colors
+$--ds-ui-bgBlackout60: rgba(42, 53, 63, 0.6)
+    
+//UI colors
+$--ds-ui-dark90: #1F3345
+$--ds-ui-blueAccent: #002CFB
+$--ds-ui-yellow: #FFD500
+$--ds-ui-green: #28A879
+$--ds-ui-warning: #F89500
+$--ds-ui-warningLight: rgba(255, 213, 0, 0.15)
+$--ds-ui-rowHover: rgba(212, 223, 243, 0.17)
+
+//Text colors
+$--ds-text-primary: #121922
+$--ds-text-hover: #2E3C4E
+$--ds-text-secondary: #71869D
+$--ds-text-header: #8E9AA8
+
+//Icon colors
+$--ds-icon-lightBG: #F1F4F9
+$--ds-icon-blueLight: #ADBFDF
+$--ds-icon-blueL55: rgba(216, 228, 251, 0.55)
+
+//Fonts
+$--ds-font-regular: 400
+$--ds-font-medium: 500
+$--ds-font-bold: 700
+
+*
+    font-family: "SF Pro Display"
+
+.wrapper
+    max-width: 1440px
+
+.btn
+    padding: 0.7em 1.4em
+    font-size: 0.875rem
+    color: $--ds-ui-blueAccent
+    border-color: $--ds-icon-lightBG
+
+    &:hover, &:focus
+        background-color: #1b3ed8 !important
+        border-color: transparent
+
+.payment-btn
+    background-color: $--ds-ui-blueAccent
+
+.dropdown-item
+    padding: 0.6em 1.4em
+    font-size: 0.875rem
+
+.date-range 
+    i
+        color: $--ds-icon-blueLight
+
+    p
+        color: $--ds-ui-blueAccent
+
+.input-group > *
+    border-color: $--ds-icon-lightBG
+
+.bi-x-lg
+    color: $--ds-icon-blueLight
+
+    &:hover
+        color: $--ds-ui-blueAccent
+        transition: color .2s ease-in-out
+
+//Header
+
+.header-block
+    padding: 1em 2em
+    
+    .dropdown
+        width: 100%
+
+    // .btn:not(:last-child)
+    //     width: 12.5rem
+
+    .row
+        padding: 0
+
+    .col
+        padding: 0
+
+    h4
+        font-weight: $--ds-font-bold
+
+
+//Filters
+
+.filters-block
+    padding: 1rem 2rem
+    
+    .col
+        padding: 0
+        
+        .row
+            gap: 1.5rem
+            
+            .filter-title
+                font-size: 0.938rem
+                margin-bottom: 8px
+                
+    .col-auto
+        padding: 0
+
+.dropdown 
+    button
+        display: flex
+        justify-content: space-between
+        align-items: center
+        width: 100%
+        text-align: start
+
+    .dropdown-menu
+        width: 100%
+
+//Table
+
+thead th
+    font-size: 0.875rem
+    font-weight: $--ds-font-medium
+    color: $--ds-text-secondary
+
+tbody .col > *
+    margin-bottom: 0
+    font-weight: $--ds-font-regular
+
+
+tr:hover > *
+    background-color: $--ds-ui-rowHover
+    transition: background-color .25s ease-in-out
+
+.item-primary
+    font-size: 0.938rem
+    line-height: 140%
+
+.item-secondary
+    font-size: 0.875rem
+    color: $--ds-text-header
+
+.circle-gray
+    color: $--ds-ui-bgBlackout60
+
+.circle-yellow
+    color: $--ds-ui-yellow
+
+.circle-green
+    color: $--ds-ui-green
+
+.badge
+    font-size: 0.875rem
+    padding: 0.4rem 0.5rem
+
+.badge-default
+    border: 1px solid $--ds-ui-blueAccent
+    color: $--ds-ui-blueAccent
+
+.status-good
+    background-color: $--ds-icon-blueL55
+    color: $--ds-ui-blueAccent
+
+.status-warning
+    background-color: $--ds-ui-warningLight
+    color: $--ds-ui-warning
+
+tbody tr:hover > td > .row-controls
+    transform: translateX(-162px)
+    opacity: 1
+    z-index: 0
+
+.row-controls
+    display: flex
+    gap: 0.5em
+    position: absolute
+    margin-top: 10px
+    padding-right: 1rem
+    opacity: 0
+    transition: all .5s ease-in-out
+    z-index: -1
+
+    div
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 3.5em
+        height: 3.5em
+        border-radius: 100%
+        background-color: #ffffff
+        box-shadow: 0px 4px 5px #E9EDF3
+        transition: box-shadow .25s ease-in-out
+
+        &:hover
+            box-shadow: 0px 4px 5px #ccd2db
+
+        img
+            width: 1.5em
+            height: 1.5em

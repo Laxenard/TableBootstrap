@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body class="bg-light">
+    <div class="wrapper mx-auto my-5">
+        <div class="header-block row gap-2 mx-0 mb-3 bg-white rounded">
+            <div class="row mx-0">
+                <div class="col">
+                    <h4>Транзакции</h4>
+                </div>
+                <div class="date-range col-2 p-0 gap-2 d-flex justify-content-end">
+                    <div class="col-auto">
+                        <i class="bi bi-chevron-left"></i>
+                    </div>
+                    <div class="col-auto d-flex gap-2">
+                        <i class="bi bi-calendar4"></i>
+                        <p>3 дня</p>
+                    </div>
+                    <div class="col-auto">
+                        <i class="bi bi-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-0 justify-content-between">
+                <div class="col-md-4 d-flex gap-2">
+                    <div class="input-group w-auto">
+                        <i class="bi bi-search input-group-text rounded bg-white"></i>
+                        <input id="search" type="search" class="form-control d-none">
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Добавить фильтр
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <button class="dropdown-item" type="button">Транзакция</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Тип операции</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Инициатор</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Отправитель</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Получатель</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Сумма</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Карта</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Комиссия нам</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Комиссия ПС</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">№ транзакции в ПС</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Статус</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">Одобрено</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Сортировка
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <button class="dropdown-item" type="button">По дате транзакции</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">По сумме</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button">По дате одобрения</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-auto p-0">
+                    <button class="payment-btn btn btn-primary text-light">Подключить платежную систему <i class="bi bi-credit-card ms-2"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="filters-block row mx-0 mb-3 gap-3 bg-white rounded">
+            <div class="col">
+                <div class="row mb-3 mx-0">
+                    <div class="col">
+                        <p class="filter-title">Транзакции</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Указать даты</button>
+                                    <input type="date">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">Тип операции</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">Инициатор</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">Отправитель</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">Получатель</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu w-100">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">Сумма</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mx-0">
+                    <div class="col">
+                        <p class="filter-title">Карта</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Указать даты</button>
+                                    <input type="date">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">Комиссия нам</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">Комиссия ПС</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">№ транзакции в ПС</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">Статус</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu w-100">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="filter-title">Одобрено</p>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary bg-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Всё
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" type="button">Всё</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">3 дня</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Неделя</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">Месяц</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                  </svg>
+            </div>
+        </div>
+        <div class="table-block row mx-0 bg-white rounded">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scrope="col"></th>
+                        <th scrope="col">Транзакция</th>
+                        <th scrope="col">Тип операции</th>
+                        <th scrope="col">Инициатор</th>
+                        <th scrope="col">Отправитель</th>
+                        <th scrope="col">Получатель</th>
+                        <th class="text-center" scrope="col">Сумма</th>
+                        <th class="text-center" scrope="col">Карта</th>
+                        <th class="text-center" scrope="col">Комиссия нам</th>
+                        <th class="text-center" scrope="col">Комиссия ПС</th>
+                        <th class="text-center" scrope="col">№ транзакции в ПС</th>
+                        <th class="text-center" scrope="col">Статус</th>
+                        <th scrope="col">Одобрено</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    <tr>
+                        <th scrope="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="currentColor" class="bi bi-circle-fill circle-gray" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                        </th>
+                        <td>
+                            <div class="row-controls">
+                                <div class="btnWarn">
+                                    <img src="/img/IconQuestion.svg" alt="Change status to notification">
+                                </div>
+                                <div class="btnApprove">
+                                    <img src="/img/approve.svg" alt="Change status to approved">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>14256</p>
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">Комиссия</p>
+                                <p class="item-secondary">Партнер ПС</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ИП Уворова</p>
+                                <p class="item-secondary">Москва</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">24</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*0005</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default invisible">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*546</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="status-good badge">Исполнено</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scrope="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="currentColor" class="bi bi-circle-fill circle-yellow" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                        </th>
+                        <td>
+                            <div class="row-controls">
+                                <div class="btnWarn">
+                                    <img src="/img/IconQuestion.svg" alt="Change status to notification">
+                                </div>
+                                <div class="btnApprove">
+                                    <img src="/img/approve.svg" alt="Change status to approved">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>14256</p>
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">Комиссия</p>
+                                <p class="item-secondary">Партнер ПС</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ИП Уворова</p>
+                                <p class="item-secondary">Москва</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">24</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*0005</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default invisible">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*546</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="status-good badge">Исполнено</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scrope="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="currentColor" class="bi bi-circle-fill circle-gray" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                        </th>
+                        <td>
+                            <div class="row-controls">
+                                <div class="btnWarn">
+                                    <img src="/img/IconQuestion.svg" alt="Change status to notification">
+                                </div>
+                                <div class="btnApprove">
+                                    <img src="/img/approve.svg" alt="Change status to approved">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>14256</p>
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">Комиссия</p>
+                                <p class="item-secondary">Партнер ПС</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ИП Уворова</p>
+                                <p class="item-secondary">Москва</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">24</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*0005</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default invisible">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*546</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="status-good badge">Исполнено</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scrope="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="currentColor" class="bi bi-circle-fill circle-green" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                        </th>
+                        <td>
+                            <div class="row-controls">
+                                <div class="btnWarn">
+                                    <img src="/img/IconQuestion.svg" alt="Change status to notification">
+                                </div>
+                                <div class="btnApprove">
+                                    <img src="/img/approve.svg" alt="Change status to approved">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>14256</p>
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">Комиссия</p>
+                                <p class="item-secondary">Партнер ПС</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ИП Уворова</p>
+                                <p class="item-secondary">Москва</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">24</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*0005</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default invisible">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*546</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="status-good badge">Исполнено</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scrope="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="currentColor" class="bi bi-circle-fill circle-gray" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                        </th>
+                        <td>
+                            <div class="row-controls">
+                                <div class="btnWarn">
+                                    <img src="/img/IconQuestion.svg" alt="Change status to notification">
+                                </div>
+                                <div class="btnApprove">
+                                    <img src="/img/approve.svg" alt="Change status to approved">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>14256</p>
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">Комиссия</p>
+                                <p class="item-secondary">Партнер ПС</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ИП Уворова</p>
+                                <p class="item-secondary">Москва</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">24</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*0005</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*546</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="status-good badge">Исполнено</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scrope="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="currentColor" class="bi bi-circle-fill circle-green" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                        </th>
+                        <td>
+                            <div class="row-controls">
+                                <div class="btnWarn">
+                                    <img src="/img/IconQuestion.svg" alt="Change status to notification">
+                                </div>
+                                <div class="btnApprove">
+                                    <img src="/img/approve.svg" alt="Change status to approved">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>14256</p>
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">Комиссия</p>
+                                <p class="item-secondary">Партнер ПС</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ИП Уворова</p>
+                                <p class="item-secondary">Москва</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">24</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*0005</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default invisible">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*546</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="status-good badge">Исполнено</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scrope="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="currentColor" class="bi bi-circle-fill circle-gray" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                        </th>
+                        <td>
+                            <div class="row-controls">
+                                <div class="btnWarn">
+                                    <img src="/img/IconQuestion.svg" alt="Change status to notification">
+                                </div>
+                                <div class="btnApprove">
+                                    <img src="/img/approve.svg" alt="Change status to approved">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>14256</p>
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">Комиссия</p>
+                                <p class="item-secondary">Партнер ПС</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ИП Уворова</p>
+                                <p class="item-secondary">Москва</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">24</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*0005</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default invisible">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*546</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="status-good badge">Исполнено</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scrope="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="currentColor" class="bi bi-circle-fill circle-gray" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                        </th>
+                        <td>
+                            <div class="row-controls">
+                                <div class="btnWarn">
+                                    <img src="/img/IconQuestion.svg" alt="Change status to notification">
+                                </div>
+                                <div class="btnApprove">
+                                    <img src="/img/approve.svg" alt="Change status to approved">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>14256</p>
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">Комиссия</p>
+                                <p class="item-secondary">Партнер ПС</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ИП Уворова</p>
+                                <p class="item-secondary">Москва</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">24</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*0005</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default invisible">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*546</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="status-good badge">Исполнено</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scrope="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="currentColor" class="bi bi-circle-fill circle-gray" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                        </th>
+                        <td>
+                            <div class="row-controls">
+                                <div class="btnWarn">
+                                    <img src="/img/IconQuestion.svg" alt="Change status to notification">
+                                </div>
+                                <div class="btnApprove">
+                                    <img src="/img/approve.svg" alt="Change status to approved">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>14256</p>
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">Комиссия</p>
+                                <p class="item-secondary">Партнер ПС</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ИП Уворова</p>
+                                <p class="item-secondary">Москва</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p class="item-primary">ПС</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">24</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*0005</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default invisible">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="badge badge-default">Да</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <p class="item-primary">*546</p>
+                                <p class="item-secondary d-none">Value</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col text-center">
+                                <span class="status-good badge">Исполнено</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <p>04.12.20</p>
+                                <p>21:58:17</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelector(".input-group").addEventListener("mouseover", () => {
+            document.getElementById("search").classList.toggle("d-none")
+        })
+    </script>
+</body>
+</html>
